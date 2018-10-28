@@ -14,7 +14,7 @@ app.use(cors())
 app.post('/writeData', function(req, res) { 
 	workbook.xlsx.readFile(req.body.filename)
 		.then(function() {
-			console.log("API Hit");
+			console.log("Write API Hit");
 			var worksheet = workbook.getWorksheet(1);
 			var row = worksheet.getRow(req.body.row);
 			row.getCell(req.body.cell).value = req.body.value; 
@@ -24,18 +24,16 @@ app.post('/writeData', function(req, res) {
 	res.jsonp({"Status" : 200});	
 });
 
-//Get request 
-app.get('/readData', function(req, res) { 
-	workbook.xlsx.readFile('taylor_swift.xlsx')
+app.post('/readData', function(req, res) { 
+	workbook.xlsx.readFile(req.body.filename)
 		.then(function() {
-			console.log("API Hit");
+			console.log("Read API Hit");
 			var worksheet = workbook.getWorksheet(1);
-			worksheet.eachRow({ includeEmpty: true }, function(row, rowNumber) {
-			console.log("Row " + rowNumber + " = " + JSON.stringify(row.values));
-		
-        });	
-    });
-	res.jsonp({"Status" : 200});
+			row = worksheet.getRow(req.body.row);
+			let valueRead = row.getCell(req.body.cell).value;
+			res.jsonp({"row" : valueRead});	
+			return;
+	});
 });
 
 app.listen(port, () => console.log(`API Mock Server listening on port ${port}!`));
