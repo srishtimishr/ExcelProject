@@ -5,14 +5,16 @@ import { AppComponent } from './app.component';
 import { UpdateExcelComponent } from './update-excel/update-excel.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReadDataComponent } from './read-data/read-data.component'
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UpdateExcelComponent
+    UpdateExcelComponent,
+    ReadDataComponent
   ],
   imports: [
     BrowserModule,

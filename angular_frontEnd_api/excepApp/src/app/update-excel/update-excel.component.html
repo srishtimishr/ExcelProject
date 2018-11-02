@@ -5,12 +5,8 @@
                 <h2>Excel update Form</h2>
                 <form [formGroup]="updateExcelForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                        <label>Enter Row Id</label>
-                        <input type="number" formControlName="row" class="form-control" placeholder="Row Id" />
-                    </div>
-                    <div class="form-group">
                         <label>Enter Cell Id</label>
-                        <input type="number" formControlName="cell" class="form-control" placeholder="Cell Id" />
+                        <input type="text" formControlName="cellId" class="form-control" placeholder="Cell Id" />
                     </div>
                     <div class="form-group">
                         <label>Enter Value</label>

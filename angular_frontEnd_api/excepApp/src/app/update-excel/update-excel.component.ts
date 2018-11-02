@@ -18,8 +18,7 @@ export class UpdateExcelComponent implements OnInit {
   'taylor_swift.xlsx'];
 
   updateExcelForm = new FormGroup({
-    row: new FormControl('',Validators.required),
-    cell: new FormControl('',Validators.required),
+    cellId: new FormControl('',Validators.required),
     filename: new FormControl('',Validators.required),
     value: new FormControl('',Validators.required)
   });

@@ -16,9 +16,8 @@ app.post('/writeData', function(req, res) {
 		.then(function() {
 			console.log("Write API Hit");
 			var worksheet = workbook.getWorksheet(1);
-			var row = worksheet.getRow(req.body.row);
-			row.getCell(req.body.cell).value = req.body.value; 
-			row.commit();
+			worksheet.getCell(req.body.cellId).value = req.body.value; 
+			worksheet.getRow().commit();
 			return workbook.xlsx.writeFile(req.body.filename);
     });
 	res.jsonp({"Status" : 200});	
@@ -29,9 +28,8 @@ app.post('/readData', function(req, res) {
 		.then(function() {
 			console.log("Read API Hit");
 			var worksheet = workbook.getWorksheet(1);
-			row = worksheet.getRow(req.body.row);
-			let valueRead = row.getCell(req.body.cell).value;
-			res.jsonp({"row" : valueRead});	
+			let v = worksheet.getCell(req.body.cellId).value;
+			res.jsonp({"row" : v});	
 			return;
 	});
 });
